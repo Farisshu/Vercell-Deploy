@@ -1,83 +1,177 @@
-# Portfolio Website - Demo untuk Vercel
+# Embedded Study Hub 🎯
 
-Ini adalah website portfolio sederhana yang siap di-deploy ke Vercel.
+Web app pribadi untuk belajar dan mengorganisir materi embedded systems (CAN, SPI, FreeRTOS, MISRA-C, dll).
 
-## 🚀 Fitur
+## 🚀 Quick Start
 
-- **Responsive Design** - Tampilan bagus di semua device
-- **Modern UI** - Gradient dan animasi smooth
-- **Single Page** - Navigasi smooth scroll
-- **Contact Form** - Demo form kontak
-- **Project Showcase** - Grid untuk menampilkan project
+### Local Development
 
-## 📁 Struktur File
+```bash
+# Install dependencies
+npm install
 
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
 ```
-├── index.html      # Halaman utama
-├── styles.css      # Styling CSS
-├── script.js       # JavaScript untuk interaktivitas
-└── README.md       # Dokumentasi
-```
 
-## 🛠️ Cara Deploy ke Vercel
+### Deploy to Vercel (3 klik!)
 
-### Opsi 1: Via GitHub (Recommended)
-
-1. Push repository ini ke GitHub:
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin <your-github-repo-url>
-   git push -u origin main
-   ```
-
+1. Push code ke GitHub repository
 2. Buka [vercel.com](https://vercel.com)
-3. Login dengan akun GitHub Anda
-4. Klik "New Project"
-5. Import repository GitHub Anda
-6. Klik "Deploy"
+3. Import repository → Deploy otomatis!
 
-### Opsi 2: Via Vercel CLI
+## 📁 Struktur Folder
 
-1. Install Vercel CLI:
-   ```bash
-   npm install -g vercel
-   ```
+```
+embedded-study-hub/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout + theme
+│   ├── page.tsx           # Dashboard utama
+│   ├── study/[slug]/      # Halaman materi
+│   ├── progress/          # Tracking progress
+│   └── settings/          # Pengaturan
+├── content/               # Markdown files
+│   ├── protocols/         # CAN, SPI, Modbus
+│   ├── rtos/             # FreeRTOS
+│   ├── toolchain/        # PlatformIO, Git
+│   └── japanese/         # Istilah teknis JP
+├── components/            # UI components
+├── lib/                   # Utilities
+└── public/               # Static assets
+```
 
-2. Login:
-   ```bash
-   vercel login
-   ```
+## 📝 Cara Tambah Materi Baru
 
-3. Deploy:
-   ```bash
-   vercel
-   ```
+### 1. Buat folder konten
 
-## 🎨 Kustomisasi
+```bash
+content/protocols/nama-topik/
+├── index.md              # Konten utama (EN)
+├── index.ja.md          # Versi Jepang (optional)
+└── quiz.json            # Quiz (optional)
+```
 
-Edit file berikut sesuai kebutuhan:
+### 2. Template Markdown
 
-- **index.html** - Ubah teks, nama, dan konten
-- **styles.css** - Ubah warna, font, dan styling
-- **script.js** - Tambahkan fungsionalitas JavaScript
+```markdown
+---
+title: "Nama Topik"
+category: "protocols"
+tags: ["can", "embedded", "communication"]
+level: "Beginner"
+estimatedTime: 30
+status: "Not Started"
+---
 
-## 📝 Catatan
+## Overview
 
-Ini adalah template demo. Anda bisa menyesuaikan:
-- Warna tema (edit gradient di CSS)
-- Konten tentang Anda
-- Project yang ditampilkan
-- Informasi kontak
+Penjelasan singkat tentang topik ini.
 
-## ✅ Kenapa Vercel Cocok untuk Portfolio?
+## Details
 
-- ⚡ **Gratis** untuk project personal
-- 🚀 **Deploy cepat** hanya dengan git push
-- 🌍 **Global CDN** - Website cepat di mana saja
-- 🔒 **HTTPS otomatis**
-- 📊 **Analytics** built-in
-- 🔄 **Auto deploy** setiap ada perubahan
+### Sub-topic 1
 
-Selamat mencoba! 🎉
+Konten dengan support:
+
+- Code blocks dengan syntax highlighting
+- Diagram Mermaid
+- Gambar dan video embed
+
+\`\`\`c
+// Contoh kode C
+void setup() {
+  // initialization
+}
+\`\`\`
+
+### Diagram Example
+
+\`\`\`mermaid
+graph TD
+    A[Start] --> B[Process]
+    B --> C[End]
+\`\`\`
+```
+
+### 3. Template Quiz (quiz.json)
+
+```json
+{
+  "questions": [
+    {
+      "question": "Pertanyaan?",
+      "options": ["A", "B", "C", "D"],
+      "correct": 0,
+      "explanation": "Penjelasan jawaban"
+    }
+  ]
+}
+```
+
+## 🎨 Fitur
+
+### 📚 Dashboard Materi
+- Navigasi per kategori
+- Filter by status, level, tag
+- Search global
+- Progress tracking
+
+### 📝 Content Viewer
+- Markdown rendering
+- Syntax highlighting (C/C++, Python, bash)
+- Mermaid diagrams
+- Code copy button
+
+### 🎮 Interactive Learning
+- Checklist per sub-topik
+- Quiz multiple choice
+- Progress bar
+- Badge system
+
+### 🌐 Japanese Support
+- Toggle EN/JP
+- Furigana support
+- Bilingual content ready
+
+## 💾 Data Storage
+
+- **Default**: localStorage (browser-based)
+- **Optional**: Supabase (sync antar device)
+
+### Export/Import Progress
+
+Di halaman Settings, bisa export progress sebagai JSON untuk backup.
+
+## 🎯 Roadmap
+
+- [x] Basic structure & dashboard
+- [x] Content viewer dengan Markdown
+- [x] Quiz system
+- [x] Progress tracking
+- [ ] Supabase integration
+- [ ] PWA offline support
+- [ ] Text-to-speech untuk JP
+- [ ] Auto-link ke GitHub repos
+
+## 📊 Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Markdown**: remark + rehype
+- **Diagrams**: Mermaid.js
+- **Deploy**: Vercel
+
+## 🙏 Credits
+
+Dibuat untuk persiapan intern di HORIBA Kyoto - Software Design Dept.
+
+---
+
+**Happy Learning! 🇯🇵✨**
